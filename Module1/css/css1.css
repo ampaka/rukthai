@@ -1,0 +1,27 @@
+html{
+    font-size : 16px ;
+
+}
+h1{
+    font-size:3rem;
+}
+
+h1,h2,h3,h4 {
+    color:rgb(26, 25, 25);
+    border-bottom: 1px solid rgb(241, 237, 237);
+    line-height : 50px;
+}
+body{
+    background: #999494;
+}
+.container{
+    background: #aa56ff;
+    padding: 15px;
+}
+@media (max-width : 650px){
+    html {
+        font-size : 13px;
+    }
+    h1 {
+        font-size : 1.5rem;
+    }

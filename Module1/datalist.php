@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper_1_14_3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class ="container-fluid"> 
+          <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+              <a class="navbar-brand text-white">ร้านรักไทยซุปเปอร์มาร์เก็ต</a>
+              <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div id="my-nav" class="collapse navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                      <li class = "nav-item dropdown" >
+                          <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ผู้ใช้งาน</a>
+                          <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="datalist.php">ดูรายชื่อ</a>
+                                  <a class="dropdown-item" href="admin.html">เพิ่มเจ้าของร้าน</a>
+                                  <a class="dropdown-item" href="staff.html">เพิ่มพนักงาน</a>
+                                  <a class="dropdown-item" href="supplier.html">เพิ่มตัวแทนจำหน่าย</a>
+								  <a class="dropdown-item" href="customer.html">เพิ่มลูกค้า</a>
+                          </div>
+                      </li>
+
+
+                  <li class = "nav-item"><a href = "../Module2/order.html"  class = "nav-link active">ซื้อ </a></li>
+                  <li class = "nav-item dropdown" >
+                      <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ขาย</a>
+                      <div class = "dropdown-menu">
+                          <a href ="../Module3/sell.html" class ="dropdown-item"> รายการขาย</a>
+                          <a href ="../Module3/receipt.html" class ="dropdown-item"> ใบเสร็จเก่า</a>
+                      </div>
+                  </li>
+                  <li class = "nav-item dropdown" >
+                      <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">สินค้า</a>
+                      <div class = "dropdown-menu">
+                          <a href ="../Module4/product.html" class ="dropdown-item"> กลุ่มสินค้า</a>
+                          <a href ="../Module4/stock.html" class ="dropdown-item"> จัดการสต๊อก</a>
+                      </div>
+                  </li>
+
+                  <li class = "nav-item dropdown" >
+                      <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ออกรายงาน</a>
+                      <div class = "dropdown-menu">
+                          <a href ="../Module5/sell report.html" class ="dropdown-item"> รายงานการขาย</a>
+                          <a href ="../Module5/order report.html" class ="dropdown-item"> รายงานสั่งซื้อ</a>
+                          <a href ="../Module5/stock report.html" class ="dropdown-item"> รายงานสต๊อกสินค้า</a>
+                      </div>
+                  </li>
+          </ul>
+      </div>
+ <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+             <li class = "nav-item dropdown" >
+                    <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ยินดีต้อนรับคุณ ........</a>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../index.html">ออกจากระบบ</a>
+                     </div> 
+                </li>
+  </nav>
+</div>
+
+  
+   <br>
+   <br>
+   <br>
+   
+    <div class="container mt-4">
+        <h2>รายชื่อ</h2>
+        
+<?php
+//ดีงคำสั่ง เชื่อมต่อ db จากอีกไฟล์
+require('mysql_conn.php');
+
+$query = "SELECT*FROM admin order by admin_no ";
+
+
+//สั่งให้ sq; ทำงาน
+$result = $mysqli->query($query) or die ("Query Failed");
+
+//ตรวจสอบจำนวนข้อมูล
+if($result->num_rows==0){
+	echo "Nothing Display";
+}
+print "<table border=1>\n";
+echo "<tr><th>รหัส</th><th>ตำแหน่ง</th><th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th><th>ที่อยู่</th><th>Email</th><th>เบอร์โทรศัพท์</th><th colspan='2'>เลือกทำงาน</th></tr>";
+while($row =$result->fetch_array()){
+	
+	//แสดงข้อมูลเจ้าของร้าน
+	echo "<td>",$row['admin_no'],"</td>\n";
+	echo "<td>",$row['admin_position'],"</td>\n";
+	echo "<td>",$row['admin_name'],"</td>\n";
+	echo "<td>",$row['admin_fname'],"</td>\n";
+	echo "<td>",$row['admin_lname'],"</td>\n";
+	echo "<td>",$row['admin_address'],"</td>\n";
+	echo "<td>",$row['admin_email'],"</td>\n";
+	echo "<td>",$row['admin_number'],"</td>\n";
+	$admin_no =$row['admin_no'];
+	//สร้าง link ไปยังโปรแกรม php ที่ทำหน้าที่แสดงข้อมูลสำหรับแก้ไขพร้อมส่งข้อมูลรหัสแผนก
+echo "<td><a href=\"edit_admin.php?admin_no=$admin_no\">Edit</a></td>\n";
+//สร้าง link ไปยังโปรแกรม php ที่ทำหน้าที่ลบข้อมูลรพร้อมส่งรหัสแผนกหัสแผนก
+echo "<td><a href=\"delete_admin.php?admin_no=$admin_no\">Delete</a></td>\n";
+echo "\t</tr>\n";
+}
+	
+
+echo "</table>";
+//แสดงจำนวนข้อมูลที่ดึงมาได้
+
+echo "จำนวนข้อมูลทั้งหมด  :",$result->num_rows,"รายการ<br>";
+
+//จบการติดต่อกับฐานข้อมูล
+$result->free_result();
+$mysqli->close();
+
+
+?>
+
+        
+       
+      </div>
+	  <!-- Center-aligned -->
+      <ul class="pagination justify-content-center" style="margin:30px 0">
+  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+  <li class="page-item"><a class="page-link" href="#">1</a></li>
+  <li class="page-item active"><a class="page-link" href="#">2</a></li>
+  <li class="page-item"><a class="page-link" href="#">3</a></li>
+  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+		
+		
+      <script>
+      $(document).ready(function(){
+        $("#myInput").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      </script>
+ 
+
+</body>
+</html>

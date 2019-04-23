@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Staff</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/popper_1_14_3.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class ="container-fluid"> 
+          <nav class="navbar navbar-expand-lg navbar-dark bg-danger fixed-top">
+              <a class="navbar-brand text-white">ร้านรักไทยซุปเปอร์มาร์เก็ต</a>
+              <button class="navbar-toggler" data-target="#my-nav" data-toggle="collapse">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+              <div id="my-nav" class="collapse navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                      <li class = "nav-item dropdown" >
+                          <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ผู้ใช้งาน</a>
+                          <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="datalist.php">ดูรายชื่อ</a>
+                                  <a class="dropdown-item" href="admin.html">เพิ่มเจ้าของร้าน</a>
+                                  <a class="dropdown-item" href="staff.html">เพิ่มพนักงาน</a>
+                                  <a class="dropdown-item" href="supplier.html">เพิ่มตัวแทนจำหน่าย</a>
+								  <a class="dropdown-item" href="customer.html">เพิ่มลูกค้า</a>
+                          </div>
+                      </li>
+
+
+                  <li class = "nav-item"><a href = "../Module2/order.html"  class = "nav-link active">ซื้อ </a></li>
+                  <li class = "nav-item dropdown" >
+                      <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ขาย</a>
+                      <div class = "dropdown-menu">
+                          <a href ="../Module3/sell.html" class ="dropdown-item"> รายการขาย</a>
+                          <a href ="../Module3/receipt.html" class ="dropdown-item"> ใบเสร็จเก่า</a>
+                      </div>
+                  </li>
+                  <li class = "nav-item dropdown" >
+                      <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">สินค้า</a>
+                      <div class = "dropdown-menu">
+                          <a href ="../Module4/product.html" class ="dropdown-item"> กลุ่มสินค้า</a>
+                          <a href ="../Module4/stock.html" class ="dropdown-item"> จัดการสต๊อก</a>
+                      </div>
+                  </li>
+
+                  <li class = "nav-item dropdown" >
+                      <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ออกรายงาน</a>
+                      <div class = "dropdown-menu">
+                          <a href ="../Module5/sell report.html" class ="dropdown-item"> รายงานการขาย</a>
+                          <a href ="../Module5/order report.html" class ="dropdown-item"> รายงานสั่งซื้อ</a>
+                          <a href ="../Module5/stock report.html" class ="dropdown-item"> รายงานสต๊อกสินค้า</a>
+                      </div>
+                  </li>
+          </ul>
+      </div>
+ <div id="my-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+             <li class = "nav-item dropdown" >
+                    <a href = "#"  class = "nav-link dropdown-toggle" data-toggle = "dropdown">ยินดีต้อนรับคุณ ........</a>
+                    <div class="dropdown-menu">
+                            <a class="dropdown-item" href="../index.html">ออกจากระบบ</a>
+                     </div> 
+                </li>
+  </nav>
+</div>
+
+  
+   <br>
+   <br>
+   <br>
+   
+   
+   <div class="container mt-3">
+    <h2>เพิ่มรายชื่อพนักงาน</h2>
+    
+    <style>
+            * {
+              box-sizing: border-box;
+            }
+            
+            input[type=text], select, textarea {
+              width: 100%;
+              padding: 12px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              resize: vertical;
+            }
+            
+            label {
+              padding: 12px 12px 12px 0;
+              display: inline-block;
+            }
+            
+            input[type=submit] {
+              background-color: #4CAF50;
+              color: white;
+              padding: 12px 20px;
+              border: none;
+              border-radius: 4px;
+              cursor: pointer;
+              float: right;
+            }
+            
+            input[type=submit]:hover {
+              background-color: #45a049;
+            }
+            
+            .container {
+              border-radius: 5px;
+              background-color: #f2f2f2;
+              padding: 20px;
+            }
+            
+            .col-25 {
+              float: left;
+              width: 25%;
+              margin-top: 6px;
+            }
+            
+            .col-75 {
+              float: left;
+              width: 75%;
+              margin-top: 6px;
+            }
+            
+            /* Clear floats after the columns */
+            .row:after {
+              content: "";
+              display: table;
+              clear: both;
+            }
+            
+            /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+            @media screen and (max-width: 600px) {
+              .col-25, .col-75, input[type=submit] {
+                width: 100%;
+                margin-top: 0;
+              }
+            }
+            </style>
+            </head>
+            <body>
+            
+          
+            <div class="container">
+              <form action="/action_page.php">
+              <div class="row">
+                <div class="col-25">
+                  <label for="no">รหัสประจำตัว</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="no" name="no" placeholder="รหัสประจำตัว...">
+                </div>
+              <div class="col-25">
+                    <label for="position">ตำแหน่ง</label>
+                  </div>
+              <div class="col-75">
+                    <select id="position" name="position">
+                      
+                      <option value="staff">พนักงาน</option>
+                      
+                    </select>
+                  </div>
+                  <div class="col-25">
+                        <label for="name">คำนำหน้า</label>
+                      </div>
+                  <div class="col-75">
+                        <input type="text" id="name" name="name" placeholder="นาย/นาง/นางสาว">
+                      </div>
+                <div class="col-25">
+                            <label for="fname">ชื่อ</label>
+                          </div>
+                 <div class="col-75">
+                        <input type="text" id="fname" name="fname" placeholder="สมหญิง">
+                        </div>
+                <div class="col-25">
+                                <label for="lname">นามสกุล</label>
+                              </div>      
+                <div class="col-75">
+                  <input type="text" id="lname" name="lname" placeholder="แซ่ปัง">
+                </div>
+                <div class="col-25">
+                        <label for="e-mail">อีเมล</label>
+                      </div> 
+                <div class="col-75">
+                        <input type="text" id="e-mail" name="e-mail" placeholder="AA@hotmail.com">
+                      </div>
+               <div class="col-25">
+                        <label for="address">ที่อยู่</label>
+                          </div> 
+                <div class="col-75">
+                        <input type="text" id="address" name="address" placeholder="22 อ.เมือง จ.พัทลุง">
+                          </div>
+                <div class="col-25">
+                         <label for="number">เบอร์โทรศัพท์</label>
+                                  </div> 
+                <div class="col-75">
+                        <input type="text" id="number" name="number" placeholder="088 123 4567">
+                </div>
+                <div class="col-25">
+                             <label for="username">ชื่อเข้าสู่ระบบ</label>
+                 </div> 
+                <div class="col-75">
+                        <input type="text" id="username" name="username" placeholder="ampaka">
+                 </div>
+                 <div class="col-25">
+                        <label for="password">รหัสผ่าน</label>
+                 </div> 
+                 <div class="col-75">
+                   <input type="text" id="password" name="password" placeholder="12345600"> <br><br>
+                </div>
+                 
+                <div class="row"> 
+                      <p> <button type="button" class="btn btn-outline-success">บันทึก</button> &nbsp;&nbsp;
+				<button type="button" class="btn btn-outline-danger">ยกเลิก</button>	
+                        </div>  
+                 </form>
+                 
+                </div>
+
+   
+</body>
+</html>

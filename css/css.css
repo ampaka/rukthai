@@ -1,0 +1,31 @@
+html{
+    font-size: 16px;
+}
+
+.btn-danger {
+    background: rgb(81, 150, 240) ;
+    border-color: rgb(230, 189, 8);
+}
+.btn-danger-hover{background: green;
+    border-color: green;
+    }
+    @import url('https://fonts.googleapis.com/css?family=Kanit');
+    h1,h2,h3,h4{
+        font-family: "5103_tLU_JIUMJIUM";
+    }
+	
+/*สีแทบเมนูด้านบน*/ .navbar {
+	background: #FF99CC;
+	border-color: #09F;
+ 
+}
+ 
+/*สีและเส้นขอบปุ่มสี่เหลี่ยม*/.navbar-default .navbar-toggle {
+    border-color: #FFF;
+	background:#fff;
+}
+ 
+/*สีแถบเวลาชี้ลิงค์*/#bs-example-navbar-collapse-1 li:hover{
+	background:#fff;
+	box-shadow: 0px 5px #51C1F1 inset; /*เส้นข้างบนแถบ*/
+}

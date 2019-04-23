@@ -1,0 +1,16 @@
+<?php
+require('mysql_conn.php');
+
+$admin_no = $_REQUEST['admin_no'];
+$admin_name = $_REQUEST['admin_name'];
+
+$sql = "UPDATE admin set admin_name='$admin_name' where admin_no='$admin_no'";
+
+//excute sql
+if($mysqli->query($sql)){
+	echo "RECORD UPDATE";
+}else{
+	echo "ERROR :",mysql_error();
+}
+
+?>
